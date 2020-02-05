@@ -35,7 +35,7 @@ touch creds/fb_creds.json
 
 - Generate the acess_token and keep it somewhere safe.
 
-- Note down the page id for your page. You may find inside Facebook's **Access Token Debugger** or you can find it inside the about section of your page when you open it as an administrator. 
+- Note down the page id for your page. You may find it inside Facebook's **Access Token Debugger** or inside the about section of your page when you open it as an administrator. 
 
 - Now paste the values inside the file `fb_creds.json`.
 
@@ -78,13 +78,13 @@ touch creds/twitter_creds.json
 
 - Create a channel on telegram in case you don't have one.
 
-- Use [Bot Father](https://t.me/botfather) to create the telegram bot framework.
+- Use [Bot Father](https://t.me/botfather) to create the telegram bot.
 
-- Make sure the robot has permissions to post messages.
+- Generate the access token.
 
-- Generate the access token
+- Make sure the bot has permissions to post messages.
 
-- Send a message to the bot from your admin account(robots can't send you a message unless you message them)
+- Send a message to the bot from your admin account(robots can't send you a message unless you message them).
 
 - Send a GET request to `api.telegram.org/bot{MY ACCESS TOKEN}/sendMessage`
 
@@ -125,7 +125,7 @@ pip install -r requirements.txt
     - I thought it would be quick way to search through the posted links by storing the values inside a database. You may use any other technique.
     In case, it is faster, please bother to contribute.
 
-    - I have used `MySQL`. You may use any other, just edit the file [`db_connect.py`](./dbconnect.py) 
+    - I have used `MySQL`. You may use any other, just edit the file [`db_connect.py`](./db_connect.py) 
     accordingly.
 
 - Set the URL for RSS feed inside the file.
@@ -136,6 +136,7 @@ touch creds/creds_db.json
 ```
 
 - Create a database table and add the details to the `creds_db.json`
+
 **Format**
 ```json
 {
@@ -153,6 +154,7 @@ touch creds/creds_db.json
 nano creds/creds_feed.json
 ```
 and add the feed URL.  
+
 **Format**
 ```json
 {
@@ -166,7 +168,15 @@ python process_feed.py
 ```
 This will add the links to the database.
 
-- Now schedule a [`cron`](https://en.wikipedia.org/wiki/Cron) job according to your requirements.
+- Try adding a post to your website(anyhow just add an item to your RSS feed) and test if everything is working well by running
+```python
+python post_to_social.py
+```
+If everything went well, you will get a message on telegram from your telegram bot about the response after posting.
+
+I don't know if this is best way to notify the owner about the posting, it is so currently.  
+
+- Now schedule a [`cron`](https://en.wikipedia.org/wiki/Cron) job for running the script `post_to_social.py` according to your requirements.
 
 TODO
 - Add support for LinkedIn.
