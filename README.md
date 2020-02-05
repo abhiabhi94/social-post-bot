@@ -34,6 +34,7 @@ touch creds/fb_creds.json
 ```
 
 - Generate the acess_token and keep it somewhere safe.
+    - **Note**: Generate and use `long-lived tokens` as shorter ones expire too soon.
 
 - Note down the page id for your page. You may find it inside Facebook's **Access Token Debugger** or inside the about section of your page when you open it as an administrator. 
 
@@ -158,9 +159,20 @@ and add the feed URL.
 **Format**
 ```json
 {
+    "SITE_NAME": "THE NAME OF THE WEBSITE",
     "URL": "MY RSS FEED URL"
 }
 ```
+
+- The value of `SITE_NAME` will be used in creating posts.
+    
+    - The sample template for a post will be:
+    
+```    
+Checkout this new post from Git: TITLE OF THE POST https://LINK_TO_THE_POST
+```
+
+In case you want to customize the message for posts, you may edit the [`POST`] variable inside [`process_feed.py`](./process_feed.py)
 
 - Initially, to add the entries that are already present on your website, run
 ```python
@@ -172,9 +184,7 @@ This will add the links to the database.
 ```python
 python post_to_social.py
 ```
-If everything went well, you will get a message on telegram from your telegram bot about the response after posting.
-
-I don't know if this is best way to notify the owner about the posting, it is so currently.  
+If everything went well, you will get a message on telegram from your telegram bot about the response after posting.(I don't know if this is best way to notify the owner about the posting but currently, it is as it is.)  
 
 - Now schedule a [`cron`](https://en.wikipedia.org/wiki/Cron) job for running the script `post_to_social.py` according to your requirements.
 
