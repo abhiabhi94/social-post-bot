@@ -1,0 +1,7 @@
+# Credentials #
+####################
+*.json
+
+# Binary python files#
+###################
+*.py[c|o|d]

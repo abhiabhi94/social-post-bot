@@ -1,0 +1,36 @@
+from MySQLdb._exceptions import IntegrityError
+from parse_feed import parse_feed
+from db_connect import db_connect, db_close
+
+POST = """Checkout this new post from Hackadda: {}
+{}"""
+
+table, col, cursor, connection = db_connect()
+INSERTION_QUERY = """INSERT INTO {} ({}) VALUES (%s) """.format(table, col)
+
+
+def process_feed():
+    """
+    Returns
+        A list of messages with the links to be posted on different social platforms.
+    """
+    items = parse_feed()
+
+    messages = []
+    for item in items:
+        title = item.title
+        link = item.link
+        try:
+            cursor.execute(INSERTION_QUERY, (link, ))
+            messages.append(POST.format(title, link))
+        except IntegrityError:
+            # print(f'Duplicate link : {link}')
+            continue
+
+    db_close(cursor, connection)
+
+    return messages
+
+
+if __name__ == "__main__":
+    print(f'{len(process_feed())} entries were added to the database.')
