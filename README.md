@@ -48,6 +48,8 @@ touch creds/fb_creds.json
 }
 ```
 
+- As of now, before your application can go live on Facebook, it will require a privacy policy. In case you don't have one, you may generate one using https://www.privacypolicytemplate.net/
+
 #### Twitter
 
 - Create an account on twitter.
@@ -167,12 +169,12 @@ and add the feed URL.
 - The value of `SITE_NAME` will be used in creating posts.
     
     - The sample template for a post will be:
-    
-```    
-Checkout this new post from Git: TITLE OF THE POST https://LINK_TO_THE_POST
-```
 
-In case you want to customize the message for posts, you may edit the [`POST`] variable inside [`process_feed.py`](./process_feed.py)
+    
+> Checkout this new post from The GitHub Blog: Browse good first issues to start contributing to open source https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/
+
+
+In case you want to customize the message for posts, you may edit the `POST` variable inside [`process_feed.py`](./process_feed.py)
 
 - Initially, to add the entries that are already present on your website, run
 ```python
