@@ -5,7 +5,7 @@ from creds.read_creds import read_cred_file
 CRED_FILE = 'twitter_creds.json'
 
 
-def twitter_post(text=''):
+def twitter_post(text, link):
     """
     Returns
         bool : if the text was successfully posted
@@ -14,7 +14,9 @@ def twitter_post(text=''):
 
     Params
         text: str
-            The complete text to be pasted.
+            the text to be posted
+        link: str
+            the link to be posted
     """
     cred = read_cred_file(CRED_FILE)
 
@@ -25,7 +27,7 @@ def twitter_post(text=''):
             access_token_key=cred['access_token_key'],
             access_token_secret=cred['access_token_secret']
         )
-        status = api.PostUpdates(text)
+        tweet = api.PostUpdates('\n'.join([text, link]))
     except Exception as _:
         return f'Exception occured during posting to twitter: {_}'
 

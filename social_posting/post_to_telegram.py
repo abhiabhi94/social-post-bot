@@ -7,11 +7,27 @@ CRED_FILE = 'telegram_creds.json'
 API_URL = 'https://api.telegram.org/bot{}/sendMessage'
 
 
+def check_status(r):
+    """
+    Returns
+        bool : if the post was successful
+        str : if the post was unsuccessful
+
+    Params:
+        r: object
+            response object received after the request.
+    """
+    if r.status_code == 200:
+        return True
+    else:
+        return f'The post to Telegram failed with an error code:{r.raise_for_status}'
+
+
 def notify_admin(token, admin, channel, text):
     """
     Notify the administrator about the last text posted in the channel
     Returns
-        None
+        The resposne received from the request object after it's execution.
 
     Params
         token: str
@@ -25,42 +41,53 @@ def notify_admin(token, admin, channel, text):
     """
     params = {
         'chat_id': admin,
-        'text': f'In the channel @{channel}, this message was posted:\n{text}',
+        'text': f'In the channel @{channel}, this message was posted: {text}',
     }
 
-    requests.post(API_URL.format(token), data=params)
+    try:
+        response = requests.post(API_URL.format(token), data=params)
+    except Exception as _:
+        return f'Exception occured during posting to Telegram Admin: {_}'
+
+    return check_status(response)
 
 
-def telegram_post(text, post_to_channel=True):
+def telegram_post(text, link='', post_to_channel=True):
     """
     Returns
-        bool : if the text was successfully posted
-        OR
-        str: a message along with the exception in case the post was unsuccessfull.
+        The response received from the request object after it's execution.
 
     Params
         text: str
-            The complete text to be posted.
+            the text to be posted
+        link: str
+            default: ''
+            the link to be posted
         post_to_channel: bool
             default: True
             Whether the text has to be posted to the channel or not.
     """
-
     creds = read_cred_file(CRED_FILE)
     try:
         token = creds['token']
         channel = creds['channel']
 
+        text_to_post = '\n'.join([text, link])
+
         params = {
             'chat_id': f'@{channel}',
-            'text': text
+            'text': text_to_post,
         }
 
         if post_to_channel:
-            requests.post(API_URL.format(token), data=params)
-        notify_admin(token, creds['admin_id'], channel, text)
+            response = requests.post(API_URL.format(token), data=params)
+            return check_status(response)
 
     except Exception as _:
-        return f'Exception occured during posting to telegram: {_}'
+        return f'Exception occured during posting to Telegram channel: {_}'
 
-    return True
+    return notify_admin(token,
+                        creds['admin_id'],
+                        channel,
+                        text_to_post
+                        )

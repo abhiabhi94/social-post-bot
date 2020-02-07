@@ -7,7 +7,7 @@ CRED_FILE = 'linkedin_creds.json'
 API_URL = 'https://api.linkedin.com/v2/shares'
 
 
-def linkedin_post(text):
+def linkedin_post(text, link):
     """
     Returns
         bool : if the text was successfully posted
@@ -16,7 +16,10 @@ def linkedin_post(text):
 
     Params
         text: str
-            The complete text to be pasted.
+            the text to be posted
+        link: str
+            default: ''
+            the link to be posted
     """
     creds = read_cred_file(CRED_FILE)
 
