@@ -10,7 +10,7 @@ Currently, it posts the stuff to your page
 notifies the admin, on telegram about the post.
 
 - This application was built on `Python 3.7.5` and `Ubuntu 18.04.3 LTS`.
-- I have used `json` files to store secret credentials. You may use other ways like `config` files, `environment variables`, etc. Just edit the code accordingly.
+- This application uses `json` files to store secret credentials. You may use other ways like `config` files, `environment variables`, etc. Just edit the code accordingly.
 
 ### Getting started:
 
@@ -49,6 +49,8 @@ touch creds/fb_creds.json
 ```
 
 - As of now, before your application can go live on Facebook, it will require a privacy policy. In case you don't have one, you may generate one using https://www.privacypolicytemplate.net/
+
+- You might also need to go through their *App Review* before they allow you to publish posts. 
 
 #### Twitter
 
@@ -125,10 +127,10 @@ pip install -r requirements.txt
 ```
 
 - Create a database. It will be used to store the links that have been posted.
-    - I thought it would be quick way to search through the posted links by storing the values inside a database. You may use any other technique.
+    - At the time of writing this appplication, it was thought it would be quick way to search through the posted links by storing the values inside a database. You may use any other technique.
     In case, it is faster, please bother to contribute.
 
-    - I have used `MySQL`. You may use any other, just edit the file [`db_connect.py`](./db_connect.py) 
+    - It uses `MySQL`. You may use any other, just edit the file [`db_connect.py`](./db_connect.py) 
     accordingly.
 
 - Set the URL for RSS feed inside the file.
@@ -171,7 +173,8 @@ and add the feed URL.
     - The sample template for a post will be:
 
     
-> Checkout this new post from The GitHub Blog: Browse good first issues to start contributing to open source https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/
+> Checkout this new post from The GitHub Blog: Browse good first issues to start contributing to open source
+https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/
 
 
 In case you want to customize the message for posts, you may edit the `POST` variable inside [`process_feed.py`](./process_feed.py)
