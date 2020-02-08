@@ -42,4 +42,5 @@ for post in posts:
     """
                     )
 # Inform the admin about the posting
+response = '\n'.join(response)
 telegram_post(response, post_to_channel=False)
