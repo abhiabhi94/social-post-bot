@@ -92,7 +92,3 @@ def telegram_post(text, link='', post_to_channel=True):
                         channel,
                         text_to_post
                         )
-
-
-print(telegram_post(text='This is a test post',
-                    link='https://www.hackadda.com', post_to_channel=False))
