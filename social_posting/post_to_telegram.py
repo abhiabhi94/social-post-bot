@@ -4,7 +4,7 @@ from creds.read_creds import read_cred_file
 
 
 CRED_FILE = 'telegram_creds.json'
-API_URL = 'https://api.telegram.org/bot{}/sendMessage'
+API_URL = 'https://api.telegram.org/bot{}/sendMessage?parse_mode=markdown'
 
 
 def check_status(r):
@@ -72,7 +72,8 @@ def telegram_post(text, link='', post_to_channel=True):
         token = creds['token']
         channel = creds['channel']
 
-        text_to_post = '\n'.join([text, link])
+        # make the text bold and join it with link
+        text_to_post = '\n'.join([f'*{text}*', link])
 
         params = {
             'chat_id': f'@{channel}',
@@ -91,3 +92,7 @@ def telegram_post(text, link='', post_to_channel=True):
                         channel,
                         text_to_post
                         )
+
+
+print(telegram_post(text='This is a test post',
+                    link='https://www.hackadda.com', post_to_channel=False))

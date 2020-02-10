@@ -15,7 +15,7 @@ def process_feed():
 
     # Sample Post will be of the form:
     # Checkout this new post from Git: TITLE OF THE POST https://LINK_TO_POST
-    POST = """Checkout this new post from""" + site_name + """: {}"""
+    POST = """Checkout this new post from """ + site_name + """: {}"""
 
     messages = []
     for item in items:
