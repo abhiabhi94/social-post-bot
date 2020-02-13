@@ -173,7 +173,7 @@ and add the feed URL.
 
     - In this case, the sample template for a post will be
 
-> Browse good first issues to start contributing to open source
+> Browse good first issues to start contributing to open source  
 https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/
 
 - In case, you add a value to `CUSTOM_TXT` such as
@@ -183,7 +183,7 @@ https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to
     - The sample template for a post will be(*The GitHub Blog is name of the site*):
 
 > Checkout this new post from The GitHub Blog  
-Browse good first issues to start contributing to open source
+Browse good first issues to start contributing to open source  
 https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/
 
 - Initially, to add the entries that are already present on your website, run
