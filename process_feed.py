@@ -11,11 +11,14 @@ def process_feed():
     Returns
         A list of messages with the links to be posted on different social platforms.
     """
-    site_name, items = parse_feed()
+    custom_txt, items = parse_feed()
 
-    # Sample Post will be of the form:
-    # Checkout this new post from Git: TITLE OF THE POST https://LINK_TO_POST
-    POST = """Checkout this new post from """ + site_name + """\n{}"""
+    """Sample Post will be of the form:
+        TITLE_OF_THE_POST
+        https://LINK_TO_POST
+    """
+    # # Edit this variable if you want to add a customary post before every post
+    # CUSTOM_TXT = custom_txt
 
     messages = []
     for item in items:
@@ -25,7 +28,8 @@ def process_feed():
             cursor.execute(INSERTION_QUERY, (link, ))
             messages.append(
                 {
-                    'text': POST.format(title),
+                    'text': custom_txt,
+                    'title': title,
                     'link': link,
                 }
             )

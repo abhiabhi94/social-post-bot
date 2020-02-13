@@ -35,7 +35,7 @@ for post in posts:
     # linkedin_post()
     response_telegram = process_response(telegram_post(**post))
 
-    response.append(f"""The response of posting the post:{post} on the social sites was:
+    response.append(f"""The response of posting the post:{post['title']} on the social sites was:
     Facebook: {response_fb}  
     Twitter: {response_twitter}  
     Telegram: {response_telegram}  

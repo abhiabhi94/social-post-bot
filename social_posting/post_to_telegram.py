@@ -52,19 +52,19 @@ def notify_admin(token, admin, channel, text):
     return check_status(response)
 
 
-def telegram_post(text, link='', post_to_channel=True):
+def telegram_post(title, link='', text='', post_to_channel=True):
     """
     Returns
         The response received from the request object after it's execution.
 
     Params
-        text: str
-            the text to be posted
+        title: str
+            the title of the post
         link: str
-            default: ''
             the link to be posted
+        text: str
+            the customary text to be posted on every post
         post_to_channel: bool
-            default: True
             Whether the text has to be posted to the channel or not.
     """
     creds = read_cred_file(CRED_FILE)
@@ -72,8 +72,8 @@ def telegram_post(text, link='', post_to_channel=True):
         token = creds['token']
         channel = creds['channel']
 
-        # make the text bold and join it with link
-        text_to_post = '\n'.join([f'*{text}*', link])
+        # Insert two new lines in-between, make the title bold
+        text_to_post = '\n\n'.join([text, f'*{title}*', link])
 
         params = {
             'chat_id': f'@{channel}',

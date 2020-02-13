@@ -10,14 +10,15 @@ def parse_feed():
     """
     Returns
         tuple:
-            the name of the website.
+            the customary message.
             the list of feed items.
     """
     creds = read_cred_file(CRED_FILE)
     feed = feedparser.parse(creds['URL'])
-    site_name = creds['SITE_NAME']
+    # By default the value will be a blank string
+    custom_txt = dict.get(creds, 'CUSTOM_TXT', '')
 
     if feed['bozo']:
         sys.exit(
             'The format of the feed does not seem to be correct. Try making changes and parse again.')
-    return site_name, feed['items']
+    return custom_txt, feed['items']

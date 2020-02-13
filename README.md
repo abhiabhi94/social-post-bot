@@ -164,22 +164,27 @@ and add the feed URL.
 **Format**
 ```json
 {
-    "SITE_NAME": "THE NAME OF THE WEBSITE",
+    "CUSTOM_TXT": "THE TEXT THAT WILL BE PREFIXED BEFORE EVERY POST",
     "URL": "MY RSS FEED URL"
 }
 ```
 
-- The value of `SITE_NAME` will be used in creating posts.
-    
+- You may choose to ignore the `CUSTOM_TXT` field, if you don't want to prefix a customary post with every post.
+
+    - In this case, the sample template for a post will be
+
+> Browse good first issues to start contributing to open source
+https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/
+
+- In case, you add a value to `CUSTOM_TXT` such as
+    ```
+    "CUSTOM_TXT": "Checkout this new post from The GitHub Blog" 
+    ```
     - The sample template for a post will be(*The GitHub Blog is name of the site*):
 
-    
 > Checkout this new post from The GitHub Blog  
 Browse good first issues to start contributing to open source
 https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/
-
-
-In case you want to customize the message for posts, you may edit the `POST` variable inside [`process_feed.py`](./process_feed.py)
 
 - Initially, to add the entries that are already present on your website, run
 ```python

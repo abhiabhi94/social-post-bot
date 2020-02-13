@@ -6,7 +6,7 @@ from creds.read_creds import read_cred_file
 CRED_FILE = 'fb_creds.json'
 
 
-def fb_post(text, link):
+def fb_post(title, link, text=''):
     """
     Returns
         bool : if the text was successfully posted
@@ -14,17 +14,21 @@ def fb_post(text, link):
         str: a message along with the exception in case the post was unsuccessfull.
 
     Params
-        text: str
-            the text to be posted
+        title: str
+            the title of the post
         link: str
             the link to be posted
+        text: str
+            the customary text to be posted on every post
     """
     creds = read_cred_file(CRED_FILE)
     try:
         graph = facebook.GraphAPI(access_token=creds['access_token'])
+        # Insert new line between the text and the title
+        status = '\n'.join([text, title])
         graph.put_object(parent_object=creds['page_id'],
                          connection_name='feed',
-                         message=text,
+                         message=status,
                          link=link,
                          )
     except Exception as _:
