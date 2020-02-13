@@ -1,4 +1,5 @@
-Posting stuff on a website/blog is time consuming. Manually posting that stuff to the social sites is another pain.
+### Posting stuff on a website/blog is time consuming. Manually posting that stuff to the social sites is another pain.
+
 You can use this robot to automate the process for you.
 - It will check for the new content using your [RSS](https://en.wikipedia.org/wiki/RSS) feeds and post the stuff to the social sites.
 
@@ -170,10 +171,11 @@ and add the feed URL.
 
 - The value of `SITE_NAME` will be used in creating posts.
     
-    - The sample template for a post will be:
+    - The sample template for a post will be(*The GitHub Blog is name of the site*):
 
     
-> Checkout this new post from The GitHub Blog: Browse good first issues to start contributing to open source
+> Checkout this new post from The GitHub Blog  
+Browse good first issues to start contributing to open source
 https://github.blog/2020-01-22-browse-good-first-issues-to-start-contributing-to-open-source/
 
 
