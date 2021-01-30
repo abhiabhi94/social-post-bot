@@ -1,0 +1,6 @@
+-r ./base.txt
+
+# for linting
+flake8==3.8.4
+# type-checks
+mypy==0.800

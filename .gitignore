@@ -1,6 +1,9 @@
 # Credentials #
 ####################
-*.json
+.env
+
+# log files
+*.log
 
 # Binary python files#
 ###################
