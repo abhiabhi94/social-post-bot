@@ -8,7 +8,7 @@ from social_post_bot.socials.tweet import Twitter
 from social_post_bot.socials.telegram import Telegram
 from social_post_bot.socials.medium import Medium
 from social_post_bot.logging_handler import logger
-from socials.utils import Socials
+from social_post_bot.socials.utils import Socials
 
 
 class PostSocial(Socials):
