@@ -140,7 +140,7 @@ FACEBOOK_PAGE_ID="my_page_id"
 
 - From the cloned directory, create a virtual environment.
 ```sh
-python3.7 -m venv {PATH TO VIRTUAL ENV}
+python3 -m venv {PATH TO VIRTUAL ENV}
 ```
 
 - Activate the environment inside the directory where this application has been cloned.
@@ -214,4 +214,5 @@ If everything went well, you will get a message on telegram from your telegram b
 - Now schedule a [`cron`](https://en.wikipedia.org/wiki/Cron) job for running the script `python -m social_post_bot` according to your requirements.
 
 TODO
-- Add support for LinkedIn.
+- Support LinkedIn.
+- Use hashtags when posting content to sites like twitter, facebook etc with tags if provided.
