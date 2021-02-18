@@ -1,13 +1,14 @@
-from typing import NamedTuple, List
 import sys
+from typing import List, NamedTuple
 
 import feedparser
-from pymysql.err import IntegrityError
 from pymysql.cursors import Cursor
+from pymysql.err import IntegrityError
 
-from .parser import parse_feed
 from social_post_bot.db_connect import connect
 from social_post_bot.logging_handler import logger
+
+from .parser import parse_feed
 
 
 class Message(NamedTuple):
@@ -38,7 +39,7 @@ def process_feed() -> List[Message]:
     messages = []
     table, col, connection = connect()
     insertion_query = """INSERT INTO {} ({}) VALUES (%s) """.format(table, col)
-    with connection:
+    with connection:    # type: ignore
         for item in items:
             link: str = item.link
             with connection.cursor() as cursor:  # type:Cursor

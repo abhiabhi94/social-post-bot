@@ -1,13 +1,13 @@
-import sys
 import concurrent.futures
-from typing import Union, Optional, List
+import sys
+from typing import List, Optional, Union
 
-from social_post_bot.feeds.processor import process_feed, Message
-from social_post_bot.socials.fb import Facebook
-from social_post_bot.socials.tweet import Twitter
-from social_post_bot.socials.telegram import Telegram
-from social_post_bot.socials.medium import Medium
+from social_post_bot.feeds.processor import Message, process_feed
 from social_post_bot.logging_handler import logger
+from social_post_bot.socials.fb import Facebook
+from social_post_bot.socials.medium import Medium
+from social_post_bot.socials.telegram import Telegram
+from social_post_bot.socials.tweet import Twitter
 from social_post_bot.socials.utils import Socials
 
 

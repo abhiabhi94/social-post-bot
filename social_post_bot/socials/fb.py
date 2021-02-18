@@ -1,6 +1,6 @@
 """Post the text to Facebook"""
 import os
-from typing import Union, ClassVar
+from typing import ClassVar, Union
 
 import facebook
 
