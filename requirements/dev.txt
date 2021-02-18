@@ -4,3 +4,4 @@
 flake8==3.8.4
 # type-checks
 mypy==0.800
+pre-commit==2.10.1

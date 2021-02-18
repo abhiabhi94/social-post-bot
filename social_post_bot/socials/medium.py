@@ -1,10 +1,11 @@
 import json
 import os
-from typing import Union, ClassVar
+from typing import ClassVar, Union
 
 import requests
 
 from social_post_bot.feeds.processor import Message
+
 from .base import BaseSocialSender
 
 

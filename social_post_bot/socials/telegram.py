@@ -1,11 +1,12 @@
 """Post the text to a Telegram"""
-from typing import Dict, Union, ClassVar
 import os
+from typing import ClassVar, Dict, Union
 
 import requests
 
-from .base import BaseSocialSender
 from social_post_bot.logging_handler import logger
+
+from .base import BaseSocialSender
 
 
 class Telegram(BaseSocialSender):

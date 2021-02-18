@@ -1,7 +1,7 @@
 """Parse and Return Feed contents"""
-import sys
 import os
-from typing import Tuple, List
+import sys
+from typing import List, Tuple
 
 import feedparser
 
