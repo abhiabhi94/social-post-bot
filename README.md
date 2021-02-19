@@ -1,4 +1,4 @@
-### Posting stuff on a website/blog is time consuming. Manually posting that stuff to the social sites is another pain.
+_Posting stuff on a website/blog is time consuming. Manually posting that stuff to the social sites is another pain._
 
 You can use this robot to automate the process for you.
 - It will check for the new content using your [RSS](https://en.wikipedia.org/wiki/RSS) feeds and post the stuff to the social sites.
@@ -21,9 +21,9 @@ notifies the admin, on telegram about the post.
 
 Now enter the cloned directory.
 
-Create a file `.env` to store secrets. You can use the file [.env.template]('./env.template) as a template.
+Create a file `.env` to store secrets. You can use the file [.env.template](./.env.template)as a template.
 
-Incase, you don't want to use any of the below mentioned social mediums, just set the environment variable for `POST_{MEDIUM}` to `False` in the `.env` and move ahead.
+Incase, you don't want to use any of the below mentioned social mediums, just set the environment variable for `USE_{MEDIUM}` to `False` in the `.env` and move ahead.
 For e.g, if you aren't interested in facebook, set `USE_FACEBOOK=False` and move to the next section.
 
 #### Twitter
@@ -33,11 +33,10 @@ For e.g, if you aren't interested in facebook, set `USE_FACEBOOK=False` and move
 - Create an application on [Twitter](https://developer.twitter.com/apps)
 
 - Acquire the appropriate permissions so that you have the necessary right to create status for the user.
-```
 
 - Generate the access token.
 
-- Now paste the values inside the file `twitter_creds.json`.
+- Now paste the values inside the file `.env`.
 
 ```env
 TWITTER_API_KEY="my_consumer_key"
@@ -62,7 +61,7 @@ TWITTER_ACCESS_TOKEN_SECRET="my_secret_access_token"
 
     - Note down the `chat_id` from the `response`. This will be used to notify the admin about the postings.
 
-- Now paste the details in the file `telegram_creds.json`
+- Now paste the details in the file `.env`.
 
 ```env
 TELEGRAM_TOKEN="my_token"
@@ -102,7 +101,7 @@ This example values have been taken from the [official medium docs](https://gith
 
 - In case you want a line in the end of the sort
 ```html
-<p><i>This was originally posted on <a href='https://www.hackadda.com' rel='canonical'>HackAdda</a>.</i></p>'
+<p><i>This was originally posted on <a href='https://www.my-original-website.com' rel='canonical'>MySite</a>.</i></p>'
 ```
 ```env
 MEDIUM_ACCESS_TOKEN='access_token'
@@ -159,7 +158,7 @@ pip install -r requirements.txt
     - At the time of writing this appplication, it was thought it would be quick way to search through the posted links by storing the values inside a database. You may use any other technique.
     In case, it is faster, please bother to contribute.
 
-    - It uses `MySQL`. You may use any other, just edit the file [`b_connect.py`](./social_post_bot/db_connect.py)
+    - It uses `MySQL`. You may use any other, just edit the file [`db_connect.py`](./social_post_bot/db_connect.py)
     accordingly.
 
 - Set the URL for RSS feed inside the file.
