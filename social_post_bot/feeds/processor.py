@@ -57,6 +57,7 @@ def process_feed() -> List[Message]:
                 except IntegrityError:
                     logger.info(f'Duplicate link : {link}')
                     continue
+        connection.commit()
 
     return messages
 

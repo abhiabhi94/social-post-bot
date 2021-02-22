@@ -39,4 +39,4 @@ repos:
     rev: 5.5.2
     hooks:
       - id: isort
-        args: ['--settings-path=./backend/setup.cfg']
+        args: ['--settings-path=setup.cfg']
