@@ -5,9 +5,9 @@ formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(messag
 logger = logging.getLogger('social_post_bot')
 logger.setLevel(logging.DEBUG)
 
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
+fh = logging.FileHandler('social_post_bot.log')
+fh.setLevel(logging.DEBUG)
 
-ch.setFormatter(formatter)
+fh.setFormatter(formatter)
 
-logger.addHandler(ch)
+logger.addHandler(fh)

@@ -46,7 +46,7 @@ class PostSocial(Socials):
         self.response = None
 
     @staticmethod
-    def process_response(response: Union[bool, str]) -> str:
+    def process_response(*, response: Union[bool, str]) -> str:
         if isinstance(response, bool):
             return 'success'
 
@@ -63,7 +63,8 @@ class PostSocial(Socials):
             responses = {}
             for future_response in concurrent.futures.as_completed(future_responses):
                 site = future_responses[future_response]
-                responses[site.name] = self.process_response(future_response.result())
+                responses[site.name] = self.process_response(
+                    response=future_response.result())
 
         response = '\n'.join(
             [f'*{site.title()}*: {response}'for site, response in responses.items()]
