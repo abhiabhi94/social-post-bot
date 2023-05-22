@@ -3,4 +3,4 @@ facebook-sdk==3.1.0
 feedparser==5.2.1
 PyMySQL==1.0.2
 python-twitter==3.5
-requests==2.22.0
+requests==2.31.0
